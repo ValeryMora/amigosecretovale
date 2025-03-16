@@ -52,6 +52,8 @@
 
                 // Actualizar la lista de amigos en el HTML
                 actualizarListaAmigos();
+            } else {
+                alert("Por favor ingresa un nombre válido.");
             }
         }
 
@@ -61,6 +63,12 @@
 
             // Limpiar la lista antes de agregar nuevos elementos
             listaAmigos.innerHTML = "";
+
+            // Verificar si el array está vacío
+            if (amigos.length === 0) {
+                listaAmigos.innerHTML = "<li>No hay amigos en la lista.</li>";
+                return;
+            }
 
             // Recorrer el array de amigos y agregar cada nombre como un <li>
             for (let i = 0; i < amigos.length; i++) {

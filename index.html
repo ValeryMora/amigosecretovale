@@ -76,26 +76,37 @@
                 return;
             }
 
-            // Copiar el array para evitar alterarlo mientras lo usamos
+            // Crear una copia del array para evitar alterarlo durante el sorteo
             const amigosDisponibles = [...amigos];
             const resultados = [];
+            const asignaciones = {}; // Objeto para almacenar las asignaciones
 
             // Sorteo: asignar un amigo secreto de manera aleatoria
             for (let i = 0; i < amigos.length; i++) {
-                const indexAleatorio = Math.floor(Math.random() * amigosDisponibles.length);
-                const amigoSeleccionado = amigosDisponibles.splice(indexAleatorio, 1)[0];
-                resultados.push(`${amigos[i]} -> ${amigoSeleccionado}`);
+                // Evitar que una persona se asigne a sí misma
+                let amigoAsignado;
+                do {
+                    const indexAleatorio = Math.floor(Math.random() * amigosDisponibles.length);
+                    amigoAsignado = amigosDisponibles[indexAleatorio];
+                } while (amigoAsignado === amigos[i] || asignaciones[amigos[i]]); // Asegurarse de no repetir asignación
+
+                // Registrar la asignación
+                asignaciones[amigos[i]] = amigoAsignado;
+
+                // Eliminar el amigo asignado del array para evitar duplicados
+                amigosDisponibles.splice(amigosDisponibles.indexOf(amigoAsignado), 1);
             }
 
             // Mostrar los resultados en la lista
             const resultadoLista = document.getElementById("resultado");
             resultadoLista.innerHTML = ""; // Limpiar resultados previos
 
-            resultados.forEach(result => {
+            // Mostrar las asignaciones en formato "amigo -> amigo secreto"
+            for (let amigo in asignaciones) {
                 const li = document.createElement("li");
-                li.textContent = result;
+                li.textContent = `${amigo} -> ${asignaciones[amigo]}`;
                 resultadoLista.appendChild(li);
-            });
+            }
         }
     </script>
 </body>

@@ -71,11 +71,11 @@
             }
 
             // Recorrer el array de amigos y agregar cada nombre como un <li>
-            for (let i = 0; i < amigos.length; i++) {
+            amigos.forEach(function(amigo) {
                 const li = document.createElement("li");
-                li.textContent = amigos[i];
+                li.textContent = amigo;
                 listaAmigos.appendChild(li);
-            }
+            });
         }
 
         // Función para sortear un amigo secreto

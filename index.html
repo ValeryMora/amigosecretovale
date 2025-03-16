@@ -36,6 +36,58 @@
         </section>
     </main>
 
-    <script src="app.js" defer></script>
+    <script>
+        // Crear un array vacío para almacenar los amigos
+        let amigos = [];
+
+        // Función para agregar amigos al array y actualizar la lista en el HTML
+        function agregarAmigo() {
+            const amigoInput = document.getElementById("amigo");
+            const amigoNombre = amigoInput.value.trim();
+
+            // Validar si el campo no está vacío
+            if (amigoNombre !== "") {
+                amigos.push(amigoNombre);  // Agregar el amigo al array
+                amigoInput.value = ""; // Limpiar el campo de texto
+
+                // Actualizar la lista de amigos en el HTML
+                actualizarListaAmigos();
+            }
+        }
+
+        // Función para actualizar la lista de amigos en el HTML
+        function actualizarListaAmigos() {
+            const listaAmigos = document.getElementById("listaAmigos");
+
+            // Limpiar la lista antes de agregar nuevos elementos
+            listaAmigos.innerHTML = "";
+
+            // Recorrer el array de amigos y agregar cada nombre como un <li>
+            for (let i = 0; i < amigos.length; i++) {
+                const li = document.createElement("li");
+                li.textContent = amigos[i];
+                listaAmigos.appendChild(li);
+            }
+        }
+
+        // Función para sortear un amigo secreto
+        function sortearAmigo() {
+            // Validar que haya al menos un amigo en la lista
+            if (amigos.length === 0) {
+                alert("Por favor, agrega al menos un amigo.");
+                return;
+            }
+
+            // Generar un índice aleatorio
+            const indiceAleatorio = Math.floor(Math.random() * amigos.length);
+
+            // Obtener el nombre sorteado
+            const amigoSorteado = amigos[indiceAleatorio];
+
+            // Mostrar el resultado en el HTML
+            const resultado = document.getElementById("resultado");
+            resultado.innerHTML = `<li>Amigo Secreto Sorteado: ${amigoSorteado}</li>`;
+        }
+    </script>
 </body>
 </html>

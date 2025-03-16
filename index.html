@@ -45,9 +45,13 @@
             const amigoInput = document.getElementById("amigo");
             const amigoNombre = amigoInput.value.trim();
 
+            console.log("Amigo a agregar:", amigoNombre); // Depuración
+
             // Validar si el campo no está vacío
             if (amigoNombre !== "") {
                 amigos.push(amigoNombre);  // Agregar el amigo al array
+                console.log("Array de amigos después de agregar:", amigos); // Depuración
+
                 amigoInput.value = ""; // Limpiar el campo de texto
 
                 // Actualizar la lista de amigos en el HTML
@@ -63,6 +67,8 @@
 
             // Limpiar la lista antes de agregar nuevos elementos
             listaAmigos.innerHTML = "";
+
+            console.log("Actualizando lista de amigos..."); // Depuración
 
             // Verificar si el array está vacío
             if (amigos.length === 0) {

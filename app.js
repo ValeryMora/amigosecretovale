@@ -22,15 +22,42 @@ function agregarAmigo() {
     return;
   }
 
-  // Agregar el nombre al arreglo y a la lista visual
+  // Agregar el nombre al arreglo
   amigos.push(nombre);
+
+  // Crear el elemento de lista y asignar un atributo data para identificarlo
   const li = document.createElement("li");
   li.textContent = nombre;
+  li.setAttribute("data-nombre", nombre);
+
+  // Crear el botón para eliminar manualmente
+  const btnEliminar = document.createElement("button");
+  btnEliminar.textContent = "Eliminar";
+  btnEliminar.className = "btn-eliminar";
+  btnEliminar.onclick = function() {
+    eliminarAmigo(nombre, li);
+  };
+
+  // Agregar el botón al elemento li y luego el li a la lista visual
+  li.appendChild(btnEliminar);
   listaAmigos.appendChild(li);
 
   // Limpiar el campo de texto y mantener el foco
   input.value = "";
   input.focus();
+}
+
+/**
+ * Función para eliminar un amigo manualmente.
+ */
+function eliminarAmigo(nombre, li) {
+  // Eliminar el nombre del arreglo
+  const index = amigos.indexOf(nombre);
+  if (index !== -1) {
+    amigos.splice(index, 1);
+  }
+  // Eliminar el elemento li de la lista
+  li.remove();
 }
 
 /**
@@ -59,6 +86,11 @@ function sortearAmigo() {
   // Eliminar el nombre sorteado del arreglo
   amigos.splice(indiceAleatorio, 1);
 
-  // Eliminar el <li> correspondiente de la lista visual usando "children" en lugar de "childNodes"
-  listaAmigosElement.removeChild(listaAmigosElement.children[indiceAleatorio]);
+  // Eliminar el <li> correspondiente de la lista visual usando el atributo data-nombre
+  for (let li of listaAmigosElement.children) {
+    if (li.getAttribute("data-nombre") === amigoSorteado) {
+      li.remove();
+      break;
+    }
+  }
 }

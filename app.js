@@ -28,21 +28,22 @@ function agregarAmigo() {
   li.textContent = nombre;
   listaAmigos.appendChild(li);
 
-  // Limpiar el campo de texto y mantener el foco para mayor comodidad
+  // Limpiar el campo de texto y mantener el foco
   input.value = "";
   input.focus();
 }
 
 /**
  * Función para sortear el amigo secreto.
- * Selecciona un nombre al azar y muestra el mensaje correspondiente.
+ * Selecciona un nombre al azar, muestra el mensaje y elimina el nombre sorteado.
  */
 function sortearAmigo() {
   const resultado = document.getElementById("resultado");
+  const listaAmigosElement = document.getElementById("listaAmigos");
 
   // Validación: debe haber al menos un amigo
   if (amigos.length === 0) {
-    resultado.innerHTML = "<p style='color: red;'>Debe agregar al menos un amigo.</p>";
+    resultado.innerHTML = "<p style='color: red;'>No quedan amigos por sortear. Por favor, agrega más nombres.</p>";
     return;
   }
 
@@ -54,4 +55,11 @@ function sortearAmigo() {
   resultado.innerHTML = `<p style="font-size: 22px; font-weight: bold; color: white; background-color: purple; padding: 10px; border-radius: 10px; text-align: center;">
     🎉 El amigo secreto sorteado es: <span style="color: #FFD700;">${amigoSorteado}</span> 🎉
   </p>`;
+
+  // Eliminar el nombre sorteado del arreglo
+  amigos.splice(indiceAleatorio, 1);
+
+  // Eliminar el <li> correspondiente de la lista visual
+  // Se asume que el orden en la lista es el mismo que en el arreglo
+  listaAmigosElement.removeChild(listaAmigosElement.childNodes[indiceAleatorio]);
 }

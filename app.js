@@ -59,7 +59,6 @@ function sortearAmigo() {
   // Eliminar el nombre sorteado del arreglo
   amigos.splice(indiceAleatorio, 1);
 
-  // Eliminar el <li> correspondiente de la lista visual
-  // Se asume que el orden en la lista es el mismo que en el arreglo
-  listaAmigosElement.removeChild(listaAmigosElement.childNodes[indiceAleatorio]);
+  // Eliminar el <li> correspondiente de la lista visual usando "children" en lugar de "childNodes"
+  listaAmigosElement.removeChild(listaAmigosElement.children[indiceAleatorio]);
 }

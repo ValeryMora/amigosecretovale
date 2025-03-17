@@ -22,23 +22,20 @@ body {
   justify-content: center;
   align-items: center;
   color: var(--color-text);
+  font-family: "Inter", sans-serif;
 }
 
 .main-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
-  width: 100%;
+  width: 90%;
+  max-width: 800px;
 }
 
 /* Banner */
 .header-banner {
-  flex: 40%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 0 0;
+  text-align: center;
+  padding: 20px 0;
 }
 
 .header-banner img {
@@ -48,20 +45,16 @@ body {
 
 /* Sección de entrada */
 .input-section {
-  flex: 60%;
   background-color: var(--color-secondary);
   border: 1px solid var(--color-white);
-  border-radius: 64px 64px 0 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 20px;
   padding: 20px;
-  width: 100%;
+  margin: 20px 0;
 }
 
 /* Títulos */
 .main-title {
-  font-size: 48px;
+  font-size: 2.5rem;
   font-family: "Merriweather", serif;
   font-weight: 900;
   font-style: italic;
@@ -69,64 +62,97 @@ body {
 }
 
 .section-title {
-  font-family: "Inter", sans-serif;
-  font-size: 36px;
+  font-size: 1.75rem;
   font-weight: 700;
   color: var(--color-white);
   margin: 10px 0;
-  text-align: center;
 }
 
 /* Contenedores de entrada y botón */
 .input-wrapper {
   display: flex;
   justify-content: center;
-  width: 100%;
-  max-width: 600px;
   margin-top: 20px;
 }
 
 .input-name {
-  width: 100%;
+  flex: 1;
   padding: 10px;
   border: 2px solid var(--color-white);
   border-radius: 25px 0 0 25px;
-  font-size: 16px;
+  font-size: 1rem;
   background-color: var(--color-primary);
   color: var(--color-text);
 }
 
-.button-container {
-  width: 300px;
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-/* Estilos de botón */
-button {
-  padding: 15px 30px;
-  font-family: "Inter", sans-serif;
-  font-size: 16px;
-  border: 2px solid var(--color-white);
-  border-radius: 25px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  color: var(--color-white);
-  background-color: transparent;
-  transition: background-color 0.3s ease;
-}
-
 .button-add {
-  background-color: var(--color-tertiary);
+  padding: 10px 20px;
+  border: 2px solid var(--color-white);
   border-radius: 0 25px 25px 0;
+  background-color: var(--color-tertiary);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button-add:hover {
   background-color: var(--color-button-hover);
 }
 
-/* Estilo para el botón eliminar */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Botón de sortear y resetear */
+.button-draw, .button-reset {
+  padding: 10px 20px;
+  border: 2px solid var(--color-white);
+  border-radius: 25px;
+  background-color: var(--color-button);
+  color: var(--color-white);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-draw:hover, .button-reset:hover {
+  background-color: var(--color-button-hover);
+}
+
+.button-draw img {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Listas */
+.name-list {
+  list-style: none;
+  margin: 20px 0;
+  padding: 0;
+}
+
+.name-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: var(--color-primary);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  animation: fadeIn 0.5s ease;
+}
+
+.result-list {
+  margin-top: 15px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Botón para eliminar */
 .btn-eliminar {
   margin-left: 10px;
   padding: 5px 10px;
@@ -135,7 +161,7 @@ button {
   background-color: #ff0000;
   color: #ffffff;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.875rem;
   transition: background-color 0.3s ease;
 }
 
@@ -143,40 +169,22 @@ button {
   background-color: #cc0000;
 }
 
-/* Listas */
-ul {
-  list-style-type: none;
-  color: var(--color-white);
-  font-family: "Inter", sans-serif;
-  font-size: 18px;
-  margin: 20px 0;
-  width: 100%;
-  max-width: 600px;
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.result-list {
-  margin-top: 15px;
-  color: #FFD700;
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
-}
-
-/* Botón de sortear título */
-.button-draw {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 10px 40px;
-  color: var(--color-white);
-  background-color: var(--color-button);
-  font-size: 16px;
-}
-
-.button-draw img {
-  margin-right: 40px;
-}
-
-.button-draw:hover {
-  background-color: var(--color-button-hover);
+/* Media Queries para Responsividad */
+@media (max-width: 600px) {
+  .main-title {
+    font-size: 2rem;
+  }
+  .section-title {
+    font-size: 1.5rem;
+  }
+  .input-name, .button-add, .button-draw, .button-reset {
+    font-size: 0.875rem;
+    padding: 8px 15px;
+  }
 }

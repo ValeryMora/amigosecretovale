@@ -12,7 +12,8 @@ Una aplicación web interactiva que permite a los usuarios ingresar nombres de a
 🔗 Ver **[aplicación](https://valerymora.github.io/amigosecretovale/)** en GitHub Pages.  
 
 ## 🖼️ Vista previa  
-![Vista previa de la aplicación](https://raw.githubusercontent.com/ValeryMora/amigosecretovale/main/activo/amigo-secreto.png)  
+![Vista previa de la aplicación](https://raw.githubusercontent.com/ValeryMora/amigosecretovale/main/activo/amigo-secreto.png)
+
 
 ## 📖 Cómo usar la aplicación  
 1️⃣ Escribe un nombre en el campo de texto.  
